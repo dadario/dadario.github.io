@@ -6,9 +6,36 @@
 </description>
     <link>http://dadario.github.io/</link>
     <atom:link href="http://dadario.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 26 Aug 2015 11:58:43 -0300</pubDate>
-    <lastBuildDate>Wed, 26 Aug 2015 11:58:43 -0300</lastBuildDate>
+    <pubDate>Fri, 18 Sep 2015 17:47:38 -0300</pubDate>
+    <lastBuildDate>Fri, 18 Sep 2015 17:47:38 -0300</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>Apresentação Rubyconf BR 2015</title>
+        <description>&lt;p&gt;Neste dia voltei a fazer uma apresentação sobre ruby, na verdade uma apresentação sobre &lt;a href=&quot;http://elastic.co&quot;&gt;ElasticSearch&lt;/a&gt; numa aplicação Ruby on Rails.&lt;/p&gt;
+
+&lt;p&gt;Ela pode ser conferida no link: &lt;a href=&quot;/rubyconfbr2015&quot;&gt;RubyConfBR 2015&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Depois de um bom tempo sem apresentar algo, estou de volta num evento onde os amigos também estão apresentando.&lt;/p&gt;
+
+&lt;p&gt;O quarto da foto a baixo se apresentando nesta edição
+&lt;img src=&quot;https://pbs.twimg.com/media/CPNgtUQWEAEW-na.jpg&quot; alt=&quot;Apresentando na rubyconf2015&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Mas olha como estavamos numa das primeiras versões do Rubyconf, no caso era chamado de RailsSummit&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://pbs.twimg.com/media/CNOU5FYUkAA_eOn.jpg&quot; alt=&quot;Turma na RailsSummit não lembro o ano&quot; /&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Sat, 19 Sep 2015 14:30:00 -0300</pubDate>
+        <link>http://dadario.github.io/rubyconf/apresentacao/2015/09/19/apresentacao-rubyconfbr-2015.html</link>
+        <guid isPermaLink="true">http://dadario.github.io/rubyconf/apresentacao/2015/09/19/apresentacao-rubyconfbr-2015.html</guid>
+        
+        
+        <category>rubyconf</category>
+        
+        <category>apresentacao</category>
+        
+      </item>
     
       <item>
         <title>Bem vindo ao ar!</title>

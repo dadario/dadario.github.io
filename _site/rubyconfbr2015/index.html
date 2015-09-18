@@ -1,0 +1,837 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>Evoluindo uma aplicação com ElasticSearch</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/vagas.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section>
+          <h3>Evoluindo uma aplicação com</h3>
+          <h1>ElasticSearch</h1>
+
+
+          <aside class="notes">
+						Vamos começar. Boa sorte!
+					</aside>
+        </section>
+
+<!-- Begin: Apresentação pessoal -->
+        <section>
+          <section>
+            <h1>Olá</h1>
+          </section>
+          <section>
+            <h1>Adriano Dadario</h1>
+            <p style='text-align: justify; padding-left: 30%'>
+              <img src="images/logo_twitter.png" style="width: 50px; border: none; vertical-align: middle" /> @dadario
+              <br />
+              <img src="images/logo_gmail.png" style="width: 50px; border: none; vertical-align: middle" /> adriano.dadario@vagas.com.br
+            </p>
+          </section>
+          <section>
+            <h2>Gamer</h2>
+            <img src="images/gamer.jpg" style="width: 400px" />
+          </section>
+          <section>
+            <h2>Jogador de tabuleiros</h2>
+            <img src="images/tabuleiros.jpg" style="width: 400px" />
+          </section>
+          <section>
+            <h2>e Programador</h2>
+            <img src="images/programador.jpg" style="width: 400px" />
+          </section>
+          <section>
+            <h2>Mais de 10 anos desenvolvendo com Ruby</h2>
+            <p>
+              <img src='images/duke_badge_cry.png' style='border: none; width: 150px; box-shadow: none; vertical-align: middle' />
+              <span style="font-size: 90px; letter-spacing: -20px; margin: 10px">=></span>
+              <img src='images/man.png' style='border: none; width: 150px; box-shadow: none; vertical-align: middle' />
+              <span style="font-size: 90px; letter-spacing: -20px; margin: 10px">=></span>
+              <img src='images/Ruby-language.png' style='border: none; width: 100px; padding: 3px;vertical-align: middle' />
+              <img src='images/ruby-on-rails-logo.png' style='border: none; width: 100px; padding: 3px;vertical-align: middle' />
+            </p>
+          </section>
+          <section>
+            <h2>Co-criador Comunidade</h2>
+            <p>
+              <img src='images/rubyonbr-logo-site.gif' style='width: 50%' />
+            </p>
+            <h4>falecida :,(</h4>
+          </section>
+          <section>
+            <h2>Praticante de metodologias ágeis</h2>
+            <p>
+              <img src='images/xplogo.gif' style='height: 150px; vertical-align: middel'/>
+              <img src='images/logo_scrum.png' style='height: 150px; vertical-align: middel'/>
+
+            </p>
+          </section>
+          <section>
+              <h2>Trabalhando numa empresa de gestão horizontal</h2>
+              <p>
+                <img src='images/logo-vagas.png' style="border: 0; box-shadow: none; width: 600px" />
+              </p>
+          </section>
+
+        </section>
+<!-- End: Apresentação pessoal -->
+<!-- Begin: Apresentação da VAGAS -->
+      <section>
+        <section>
+          <h2>Gestão horizontal</h2>
+          <h3>porque</h3>
+          <h1>Não tem Chefes</h1>
+        </section>
+        <section>
+          <h1>Não é uma Startup</h1>
+          <h3>
+            16 anos de existência
+          </h3>
+        </section>
+        <section>
+          <h3>é uma</h3>
+          <h2>Empresa de Tecnologia</h2>
+          <p>
+            <img src='images/empresa-tecnologia.png' />
+          </p>
+        </section>
+
+        <section>
+          <h3>Software para </h3>
+          <h2>Gestão de Recrutamento e Seleção de Pessoas</h2>
+          <p>
+            <img src='images/logo-vagas-e-partner.png' style="border: 0; box-shadow: none; width: 600px" />
+          </p>
+        </section>
+        <section>
+          <h2>Têm diversos desafios</h2>
+          <ul>
+            <li>Desenvolver usando a melhor ferramenta/tecnologia <br />
+              <small>(Migração de um sistema legado)</small></li>
+            <li>Diversos processos indicando os melhores candidatos para as empresas</li>
+            <li>Recomendações das vagas certas para os candidatos</li>
+            <li>Analisar informações e gerar diversos indicadores.<br />
+            <small><a target='_blank' href="http://www.vagas.com.br/mapa-de-carreiras">Mapa VAGAS de carreiras (http://www.vagas.com.br/mapa-de-carreiras)</a></small></li>
+
+          </ul>
+        </section>
+        <section>
+          <h2>Com 3K+ de clientes</h2>
+        </section>
+        <section>
+          <h2>Sendo estes clientes</h2>
+          <ul>
+            <li>
+              48 de 100 empresas vencedoras da GPTW*
+            </li>
+            <li>72 de 100 maiores empresas do Brasil</li>
+          </ul>
+          <small>*Great places to work</small>
+        </section>
+        <section>
+          <h4>temos</h4>
+          <h2>Média de acesso</h2>
+          <ul>
+            <li>6 milhões de visitantes únicos / mês</li>
+            <li>150 milhões de visualizações / mês</li>
+          </ul>
+          <p>
+            <small>pelo site Vagas.com.br</small>
+          </p>
+        </section>
+        <section>
+          <h2>Base de dados</h2>
+          <ul>
+            <li>10 milhões currículos</li>
+            <li>1M de vagas</li>
+            <li>
+              13K vagas abertas
+              <br />
+              <small>(500 novas / dia)</small>
+            </li>
+          </ul>
+        </section>
+
+      </section>
+<!-- End: Apresentação da VAGAS -->
+<!-- Begin: Desafio da pesquisa -->
+      <section>
+        <section>
+          <h1>O Desafio</h1>
+        </section>
+        <section>
+          <h3>renovar</h3>
+          <h2>Pesquisa de Vagas</h2>
+        </section>
+        <section>
+          <img src='images/pesquisa-vagas-antiga.jpg' />
+        </section>
+        <section>
+          <img src='images/pesquisa-vagas-antiga-lista.png' />
+        </section>
+        <section>
+          <h2>Funcionalidades simples</h2>
+          <ul style='list-style: none;'>
+            <li>
+              filtro simples por
+              <ul style='margin-left: 2em; font-size: 0.8em;'>
+                <li>nível (junior/pleno/sênior)</li>
+                <li>área profissional</li>
+                <li>regiões</li>
+                <li>e raio de interesse</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <img src='images/pesquisa-vagas.png' />
+        </section>
+        <section>
+          <img src='images/pesquisa-vagas-lista.png' />
+        </section>
+        <section>
+          <h2>Funcionalidades mais inteligentes</h2>
+          <ul>
+            <li>busca por relevância de conteúdo</li>
+            <li>categorizar por termos</li>
+            <li>apresentar totais</li>
+            <li>agrupar por datas</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Opções analisadas</h2>
+          <ul>
+            <li>
+              Full Text Search do SqlServer<br />
+              <small>banco com as informações</small>
+            </li>
+            <li>Apache Lucene™</li>
+            <li>Solr</li>
+            <li>ElasticSearch</li>
+          </ul>
+        </section>
+      </section>
+<!-- End: Desafio da pesquisa -->
+
+<!-- Begin: Informações do ElasticSearch -->
+
+      <section>
+        <section>
+          <h2>escolhemos</h2>
+          <h1>ElasticSearch</h1>
+        </section>
+        <section>
+          <h2>O que é o ElasticSearch?</h2>
+          <p>
+            Uma ferramenta para <b>pesquisa e analise de dados</b> em tempo real.<br />
+            É <b>Open Source</b> e construído sobre a biblioteca do Apache Lucene™.
+          </p>
+        </section>
+        <section>
+          <h2>Nossa Motivação</h2>
+          <ul>
+            <li>Ser orientado a documento (JSON format)</li>
+            <li>Interface de operação em RESTFul</li>
+            <li>Tem como base o Apache Lucene™<br />
+              <small>Lucene™ sem complicação</small>
+            </li>
+            <li>Fácil de escalar horizontalmente<br />
+              <small>na época o Solr era um pesadelo para distribuir</small>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h2>Instalação Simples</h2>
+          <pre><code class="bash" data-trim>
+wget -qO - https://packages.elastic.co/GPG-KEY-ElasticSearch \
+  | sudo apt-key add -
+
+echo "deb http://packages.elastic.co/ElasticSearch/1.7/debian stable main" \
+  | sudo tee -a /etc/apt/sources.list.d/ElasticSearch-1.7.list
+
+sudo apt-get update && sudo apt-get install ElasticSearch
+          </code></pre>
+          <p>
+            <small>https://www.elastic.co/downloads/elasticsearch</small>
+          </p>
+        </section>
+        <section>
+          <h3>uso descomplicado</h3>
+          <h2><a href="https://github.com/elastic/ElasticSearch-rails">ElasticSearch-rails</a></h2>
+          <p>
+            <small>https://github.com/elastic/ElasticSearch-rails</small>
+          </p>
+<pre><code class='ruby' data-trim>
+require 'ElasticSearch/model'
+
+class AnuncioDeVaga < ActiveRecord::Base
+  include ElasticSearch::Model
+  include ElasticSearch::Model::Callbacks
+end
+
+AnuncioDeVaga.import
+
+@anuncios = AnuncioDeVaga.search('foobar').records
+</code></pre>
+        </section>
+        <section>
+          <h3>plugins para facilitar</h3>
+          <h2>
+            <a href="http://mobz.github.io/ElasticSearch-head/">ElasticSearch head</a><br />
+          </h2>
+          <small>http://mobz.github.io/ElasticSearch-head/</small>
+<pre style='margin-top: -20px'><code class="bash">ElasticSearch-path:/> /bin/plugin -i mobz/ElasticSearch-head
+
+open http://localhost:9200/_plugin/head/
+</code></pre>
+          <p>
+            <img src='images/img-head.png' />
+          </p>
+        </section>
+        <section>
+          <h3>plugins para facilitar</h3>
+<h2>
+  <a href="https://www.elastic.co/guide/en/marvel/current/">Plugin Marvel</a><br />
+</h2>
+  <small>https://www.elastic.co/guide/en/marvel/current</small>
+<pre style='margin-top: -20px'><code class="bash">ElasticSearch-path:/> /bin/plugin -i elasticsearch/marvel/latest
+
+open http://localhost:9200/_plugin/marvel/
+</code></pre>
+        <p>
+          <img src='images/img-marvel.png' />
+        </p>
+        </section>
+
+        <section>
+          <h2>Boost em campos</h2>
+          <h3>executado em Query Time</h3>
+          <pre><code class='json' data-trim>
+{
+  "query_string" : {
+      "fields" : ["cargo^10", "cidade^5"],
+      "query" : "this AND that OR thus"
+  }
+}
+          </code></pre>
+          <small>https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#_boosting</small>
+        </section>
+        <section>
+          <h2>Utilização de sinônimos</h2>
+          <p>
+            Palavras com mesmo significados:
+            <br />
+            <i>tecnologia = ti = informática = computação</i>
+          </p>
+          <pre><code class='ruby' data-trim>
+settings(number_of_shards:   number_of_shards,
+  number_of_replicas: number_of_replicas,
+  analysis: {
+   filter:   {
+     synonym:            {
+       type:          :synonym,
+       synonyms_path: synonyms_path, # Path arquivo no servidor
+       ignore_case:   true
+     },
+   }
+  }) do
+  ...
+end
+          </code></pre>
+        </section>
+        <section>
+          <h2>Uso de Stop Words</h2>
+          <p>
+            Palavras sem necessidade de pesquisa:
+            <br />
+            <i>da - das - de</i>
+          </p>
+          <pre><code class='ruby' data-trim>
+settings(number_of_shards:   number_of_shards,
+  number_of_replicas: number_of_replicas,
+  analysis: {
+   filter:   {
+     stopwords_pesquisa: {
+       type:           :stop,
+       stopwords_path: stopwords_path, # Path arquivo no servidor
+       ignore_case:    true
+     },
+   }
+  }) do
+  ...
+end
+          </code></pre>
+        </section>
+
+      </section>
+<!-- End: Informações do ElasticSearch -->
+<!-- Begin: Ajuste ElasticSearch -->
+
+      <section>
+        <section>
+          <h1>Ajustes na Ferramenta</h1>
+        </section>
+        <section>
+          <h2>Esgotamento de arquivos abertos</h2>
+          <p>
+            Ocasionando alto número de requisições perdidas
+          </p>
+        </section>
+        <section>
+          <h2>Resolvendo os limite</h2>
+          <p>Modificar arquivo</p>
+          <pre><code class='bash' data-trim>
+$ vim /etc/security/limits.conf
+
+# Add lines
+elasticsearch soft nofile 32000
+elasticsearch hard nofile 32000
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>APP Servers ocupando muita memória</h2>
+        </section>
+
+        <section
+          <p>Para fácil descoberta, os APP Servers tinham instalação do ElasticSearch como Client Node, servindo de gateway</p>
+          <p>
+            <img src='images/cluster-ruby-elastic.png' style='width: 800px;' />
+          </p>
+        </section>
+        <section>
+          <p>Sendo 1GB só para o Client Node</p>
+          <p>e 500MB para os processos ruby</p>
+          <p>
+            <img src='images/ram-ruby-elastic.png' />
+          </p>
+        </section>
+
+        <section>
+          <h2>Para liberar memória</h2>
+        </section>
+
+        <section>
+          <p>Criação de um cluster respondendo através do load balance.</p>
+          <p>
+            <img src='images/cluster-ruby-elastic-separado.png' style='width: 800px;' />
+          </p>
+        </section>
+        <section>
+          <p>Remoção do ElasticSearch, reduzindo em 1GB de memória</p>
+          <p>
+            <img src='images/ram-ruby.png' />
+          </p>
+          <p>
+            <small>Instâncias menores na Amazon</small>
+          </p>
+        </section>
+
+        <section>
+          <h2>O Poder do Cluster</h2>
+        </section>
+        <section>
+            <p>Shards* menores == mais eficientes.</p>
+            <p>Fácil escalar horizontalmente</p>
+            <p>
+              Para evitar latência de acesso à disco, compensa carregar todo índice em memória
+            </p>
+            <p>
+              <small>*Shard é uma pequena porção de um índice</small>
+            </p>
+        </section>
+        <section>
+          <p>Então temos diversas máquinas para comportar todo o cluster em memória em pequenas porções</p>
+          <p>
+            <img src='images/cluster-2.png' />
+          </p>
+        </section>
+
+        <section>
+          <h1>Alertas</h1>
+        </section>
+        <section>
+          <h2>Cuidado com <br />Auto Scaling</h2>
+          <p>Quando uma nova máquina entra no pool, o tempo de sincronismo aumenta a CPU, fazendo que o sistema da Amazon crie máquinas tentando suprir a falta de recurso</p>
+        </section>
+        <section>
+          <h2>ElasticSearch <br />não é um banco</h2>
+          <ul>
+            <li>Não guarde informação definitiva</li>
+            <li>Utilize como índice de procura.</li>
+            <li>Tenha um lugar de onde você possa reconstruir seu índice</li>
+          </ul>
+        </section>
+      </section>
+<!-- End: Ajuste ElasticSearch -->
+<!-- Begin: Ajuste para Aplicação -->
+      <section>
+        <section>
+          <h1>Ajustes para nossa Aplicação</h1>
+        </section>
+        <section>
+          <h2>Resultados por relevância</h2>
+        </section>
+        <section>
+          <p>Os resultados da consulta no ElasticSearch, por padrão são ordenados por relevância do documento em frente ao termo pesquisado</p>
+          <pre><code class='json' data-trim>
+{
+  "anuncios":[
+    {
+      "id":"1176231",
+      "_score":4.5143504,
+      "cargo":"Desenvolvedor Ruby On Rails Sênior",
+      "data_de_abertura":"2015-07-31"
+    },
+    {
+      "id":"1190070",
+      "_score":3.9709675,
+      "cargo":"Desenvolvedor de soluções fantásticas em Ruby (SP)",
+      "data_de_abertura":"2015-06-15"
+    },
+    {
+      "id":"1218797",
+      "_score":0.033852845,
+      "cargo":"Especialista de Sistemas",
+      "data_de_abertura":"2015-08-05"
+    },
+    {
+      "id":"1209476",
+      "_score":0.027076446,
+      "cargo":"Desenvolvedor de Sistemas - DevOps",
+      "data_de_abertura":"2015-07-20"
+    },
+    {
+      "id":"1216012",
+      "_score":0.026461989,
+      "cargo":"Estagiário de Gestão de Dados",
+      "data_de_abertura":"2015-07-30"
+    }
+  ]
+}
+
+          </code></pre>
+        </section>
+        <section>
+          <p>Mas as pessoas queriam as vagas mais recentes, não conhecendo a importância da relevância</p>
+          <pre><code class='json' data-trim>
+{
+  "anuncios":[
+    {
+      "id":"1218797",
+      "_score":null,
+      "cargo":"Especialista de Sistemas",
+      "data_de_abertura":"2015-08-05"
+    },
+    {
+      "id":"1176231",
+      "_score":null,
+      "cargo":"Desenvolvedor Ruby On Rails Sênior",
+      "data_de_abertura":"2015-07-31"
+    },
+    {
+      "id":"1216012",
+      "_score":null,
+      "cargo":"Estagiário de Gestão de Dados",
+      "data_de_abertura":"2015-07-30"
+    },
+    {
+      "id":"1209476",
+      "_score":null,
+      "cargo":"Desenvolvedor de Sistemas - DevOps",
+      "data_de_abertura":"2015-07-20"
+    },
+    {
+      "id":"1190070",
+      "_score":null,
+      "cargo":"Desenvolvedor de soluções fantásticas em Ruby (SP)",
+      "data_de_abertura":"2015-06-15"
+    }
+  ]
+}
+          </code></pre>
+        </section>
+        <section>
+          <p>Solução foi agrupar as consultas por períodos</p>
+          <pre><code class='json' data-trim>
+{
+  "de_hoje":{
+    "anuncios":[
+      {
+        "id":"1218797",
+        "_score":0.03603749,
+        "cargo":"Especialista de Sistemas",
+        "data_de_abertura":"2015-08-05"
+      },
+    ]
+  },
+  "de_ontem":{
+    "anuncios":[
+      {
+        "id":"1176231",
+        "_score":4.5160117,
+        "cargo":"Desenvolvedor Ruby On Rails Sênior",
+        "data_de_abertura":"2015-07-31"
+      },
+    ]
+  },
+  "da_semana":{
+    "anuncios":[
+      {
+        "id":"1216012",
+        "_score":0.028526654,
+        "cargo":"Estagiário de Gestão de Dados",
+        "data_de_abertura":"2015-07-30"
+      }
+    ]
+  },
+  "do_mes":{
+    "anuncios":[
+
+      {
+        "id":"1190070",
+        "_score":3.9723117,
+        "cargo":"Desenvolvedor de soluções fantásticas em Ruby (SP)",
+        "data_de_abertura":"2015-06-15"
+      },
+      {
+        "id":"1209476",
+        "_score":0.02923976,
+        "cargo":"Desenvolvedor de Sistemas - DevOps",
+        "data_de_abertura":"2015-07-20"
+      }
+    ]
+  }
+}
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Aumento de requisições</h2>
+        </section>
+        <section>
+          <p>
+            Para cada requisição da página, <br />
+            eram feitas 5 consultas no índice</li>
+          </p>
+          <pre><code  data-trim>
+$ curl -XGET localhost:9200/search { para_vagas: de_hoje }
+$ curl -XGET localhost:9200/search { para_vagas: de_ontem }
+$ curl -XGET localhost:9200/search { para_vagas: da_semana }
+$ curl -XGET localhost:9200/search { para_vagas: do_mes }
+$ curl -XGET localhost:9200/search { para_apresentacao: dos_facets }
+          </code></pre>
+        </section>
+        <section>
+          <p>Então trocamos para</p>
+          <h3>Multi Search</h3>
+          <pre><code data-trim>
+$ cat requests
+{"index" : "fts-vagas"}
+{"query" : { para_vagas: de_hoje }
+{"index" : "fts-vagas"}
+{"query" : { para_vagas: de_ontem }
+{"index" : "fts-vagas"}
+{"query" : { para_vagas: da_semana }
+{"index" : "fts-vagas"}
+{"query" : { para_vagas: do_mes }
+{"index" : "fts-vagas"}
+{"query" : { para_vagas: dos_facets }
+
+$ curl -XGET localhost:9200/_msearch --data-binary @requests; echo
+          </code></pre>
+          <small>https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html</small>
+        </section>
+        <section>
+          <p>Como a gem ElasticSearch-Model não carrega as informações do jeito que queremos</p>
+          <pre><code class='ruby' data-trim>
+# Retorna array com os filtros
+queries = Queries.group_by_time
+
+# Única chamada ao índice
+results = Elasticsearch::Model.msearch queries, [AnuncioDeVaga]
+
+# Array com as consultas já como modelos
+puts results.inspect
+#[
+#  [AnuncioDeVaga:Object_id, ...],
+#  [AnuncioDeVaga:Object_id, ...],
+#  [AnuncioDeVaga:Object_id, ...],
+#  [AnuncioDeVaga:Object_id, ...],
+#  [AnuncioDeVaga:Object_id, ...]
+#]
+          </code></pre>
+        </section>
+        <section>
+          <p>Estendemos o ElasticSearch-Model</p>
+          <pre><code class='ruby' data-trim>
+$ vim lib/extends_elasticsearch_model.rb
+
+module Elasticsearch
+  module Model
+    module ClassMethods
+      def msearch(queries, models = [])
+        # Adding models before each query
+
+        new_queries = queries.collect do |query|
+          models << model = models.shift
+          [
+            {index: model.index_name, type: model.document_type},
+            query
+          ]
+        end
+
+        result = client.msearch body: new_queries.flatten
+        result['responses'].map do |response|
+          models << model = models.shift
+          search = Class.new do
+            def initialize(response)
+              @response = response
+            end
+
+            def execute!
+              @response
+            end
+          end
+
+          multimodel = Elasticsearch::Model::Multimodel.new(model)
+          Elasticsearch::Model::Response::Response.new(multimodel, search.new(response))
+        end
+      end
+
+    end
+    extend ClassMethods
+  end
+end
+          </code></pre>
+          <small>https://gist.github.com/dadario</small>
+        </section>
+        <section>
+          <h2>Isolamos o ElasticSearch com micro serviço</h2>
+          <p>Evitar que alterações de formatos de consultas e resposta do ElasticSearch se propague para as aplicações</p>
+        </section>
+        <section>
+          <p>
+            Na versão 0.x.x o retorno dos agrupadores eram com  <b>facets</b>
+          </p>
+          <pre><code class='json' data-trim>
+"facets": {
+  "pet": { // Programa de estágio e trainee
+    "terms": [
+      {"term": "F", "count": 227},
+      {"term": "T", "count": 16}
+    ]
+  },
+}
+          </code></pre>
+            Na versão 1.x.x mudaram para <b>aggregation</b>
+            <pre><code data-trim class='json'>
+"aggregations": {
+  "pet": { // Programa de estágio e trainee
+    "buckets": [
+      { "key": "F", "doc_count": 227},
+      { "key": "T", "doc_count": 16}
+    ]
+  }
+}
+            </code></pre>
+          </p>
+        </section>
+
+      </section>
+
+	    <section>
+	      <h1>Obrigado!</h1>
+        <p>Se tiver dúvidas, perguntas, vontade de trabalhar conosco ou só quiser trocar uma ideia:
+        <p>
+          <small><a href="http://twitter.com/dadario">adriano.dadario</a>@<a href="http://www.vagas.com.br">VAGAS.com.br</a></small>
+        </p>
+        <p style='text-align: justify; padding-left: 30%'>
+          <img src="images/logo_twitter.png" style="width: 50px; border: none; vertical-align: middle" /> @dadario
+        </p>
+        <small>presenter by: reveal.js</small>
+	    </section>
+
+      </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        slideNumber: true,
+        history: true,
+        center: true,
+
+        transition: 'convex', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true },
+          { src: 'plugin/notes/notes.js', async: true }
+        ]
+      });
+
+    </script>
+
+    <div style="position: absolute; top: 0px; margin-left: 0px; width: 100%;
+      background-color: lightgray;
+      filter:alpha(opacity=5);
+      opacity:0.5;
+      border-color:#000000;">
+      <img src='images/logo-vagas.png' style="width: 150px; float: left; position: absolute; padding: 10px 5px 0 0" />
+      <center>
+        <h2 style="color:#333">
+          <a href="http://www.twitter.com/dadario" style="color:#333; text-decoration: none">@dadario</a> | <a href="https://twitter.com/search?q=%23TODD2014&src=hash" style="color:#333; text-decoration: none">#rubyconfbr</a>
+        </h2>
+      </center>
+    </div>
+  </body>
+</html>
